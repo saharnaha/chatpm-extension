@@ -82,7 +82,7 @@ html, body {
     border: none;
   }
 
-  #loader-container {
+  .loader-container {
     height: 100%;
     display: flex;
     justify-content: center;
