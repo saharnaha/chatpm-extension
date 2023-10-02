@@ -1,5 +1,22 @@
 
+function showLoader() {
+  const loaderContainer = document.getElementById('loader-container');
+  if(loaderContainer) {
+    loaderContainer.style.display = 'block';
+  }
+}
+
+function hideLoader() {
+  
+}
+
 function injectIfram(iframeId) {
+  // remove welcome container first
+  const welcomeContainer = document.getElementById('welcome-container');
+  if (welcomeContainer) {
+    welcomeContainer.style.display = 'none';
+  }
+
   // Create a new iframe element
   const iframe = document.createElement('iframe');
 
@@ -70,27 +87,6 @@ function fetchContentAndSetIframe() {
   });
 }
   chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    function hideWelcome() {
-      // remove welcome container first
-      const welcomeContainer = document.getElementById('welcome-container');
-      if (welcomeContainer) {
-        welcomeContainer.style.display = 'none';
-      }
-    }
-
-    function showLoader() {
-      const loaderContainer = document.getElementById('loader-container');
-      if (loaderContainer) {
-        loaderContainer.style.display = 'block';
-      }
-    }
-    
-    function hideLoader() {
-      const loaderContainer = document.getElementById('loader-container');
-      if (loaderContainer) {
-        loaderContainer.style.display = 'none';
-      }
-    }
     if (message.parsed) {
       // Log or process the page content as needed
       const apiUrl = 'https://chat-pm-server-c6cfa1b3d1e6.herokuapp.com/chatbot/create';
@@ -105,8 +101,7 @@ function fetchContentAndSetIframe() {
       };
 
       console.log('sending request with body: ', requestData);
-      hideWelcome();
-      showLoader();
+
       
   
       fetch(apiUrl, {
@@ -121,7 +116,6 @@ function fetchContentAndSetIframe() {
           console.log('POST request successful:', data);
 
           injectIfram(data.id);
-          hideLoader();
         })
         .catch((error) => {
           console.error('Error making POST request:', error);

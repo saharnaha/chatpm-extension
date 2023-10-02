@@ -1,5 +1,11 @@
 
 function injectIfram(iframeId) {
+  // remove welcome container first
+  const welcomeContainer = document.getElementById('welcome-container');
+  if (welcomeContainer) {
+    welcomeContainer.style.display = 'none';
+  }
+
   // Create a new iframe element
   const iframe = document.createElement('iframe');
 
@@ -70,14 +76,6 @@ function fetchContentAndSetIframe() {
   });
 }
   chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    function hideWelcome() {
-      // remove welcome container first
-      const welcomeContainer = document.getElementById('welcome-container');
-      if (welcomeContainer) {
-        welcomeContainer.style.display = 'none';
-      }
-    }
-
     function showLoader() {
       const loaderContainer = document.getElementById('loader-container');
       if (loaderContainer) {
@@ -105,7 +103,6 @@ function fetchContentAndSetIframe() {
       };
 
       console.log('sending request with body: ', requestData);
-      hideWelcome();
       showLoader();
       
   
