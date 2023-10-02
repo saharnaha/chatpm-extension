@@ -1,0 +1,11 @@
+{
+    "manifest_version": 3,
+    "name": "Chat PM",
+    "description": "Chat PM",
+    "version": "1.0",
+    "permissions": ["activeTab", "scripting",  "tabs"],
+    "action": {
+      "default_popup": "chatpm.html",
+      "default_icon": "chatpm.png"
+    }
+  }

@@ -1,0 +1,27 @@
+.container {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children horizontally */
+    text-align: center; /* Center text within the second node */
+  }
+  
+  .node {
+    margin: 10px; /* Add spacing between nodes */
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+  }
+  
+  .node-icons {
+    justify-content: space-between;
+  }
+  
+  /* Add styles for icons (font-awesome used for demonstration) */
+  .fa {
+    font-size: 24px;
+    margin: 5px;
+  }
